@@ -150,7 +150,12 @@ export default class ScheduleSelector extends React.Component<PropsType, StateTy
       const currentDay = []
       for (let h = props.minTime; h < props.maxTime; h += 1) {
         for (let c = 0; c < props.hourlyChunks; c += 1) {
-          currentDay.push(addMinutes(addHours(addDays(startTime, d), h), c * minutesInChunk))
+          const days = addDays(startTime, d);
+          const hours = addHours(days, h);
+          const minutes = addMinutes(hours, c * minutesInChunk);
+          const time = minutes
+          console.log(time)
+          currentDay.push(time);
         }
       }
       dates.push(currentDay)
